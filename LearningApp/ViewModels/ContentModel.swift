@@ -17,14 +17,21 @@ class ContentModel: ObservableObject {
     @Published var currentModule: Module?
     var currentModuleIndex = 0
     
+    // Current Lesson
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
-    @Published var lessonDescription = NSAttributedString()
+    // Current Question
+    @Published var currentQuestion: Question?
+    var currentQuestionIndex = 0
+    
+    // Current Lesson Description
+    @Published var codeText = NSAttributedString()
     var styleData: Data?
     
     // Current selected content and test
     @Published var currentContentSelected:Int?
+    @Published var currentTestSelected:Int?
     
     init() {
         getLocalData()
@@ -84,7 +91,7 @@ class ContentModel: ObservableObject {
         }
         // Set the current module
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
-        lessonDescription = addStyling(currentLesson!.explanation)
+        codeText = addStyling(currentLesson!.explanation)
         // Set the current explanation
         // lessonDescription = currentLesson?.explanation
     }
@@ -97,13 +104,31 @@ class ContentModel: ObservableObject {
         currentLessonIndex += 1
         if currentLessonIndex < currentModule!.content.lessons.count {
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
-            lessonDescription = addStyling(currentLesson!.explanation)
+            codeText = addStyling(currentLesson!.explanation)
         }
         else {
             currentLessonIndex = 0
             currentModule = nil
         }
     }
+    
+    
+    func beginTest(_ moduleId:Int) {
+        
+        // Set the current module
+        beginModule(moduleId)
+        
+        // Set the current Question
+        currentQuestionIndex = 0
+        
+        // If there are questions, set the current question to the first one
+        if currentModule?.test.questions.count ?? 0 > 0 {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            codeText = addStyling(currentQuestion!.content)
+        }
+        
+    }
+    
     
     private func addStyling(_ htmlString:String) -> NSAttributedString {
         
@@ -125,5 +150,6 @@ class ContentModel: ObservableObject {
         
         return resultString
     }
+    
     
 }

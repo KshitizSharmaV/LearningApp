@@ -22,6 +22,7 @@
 		E246565026D5A8B400FBB290 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E246564F26D5A8B400FBB290 /* AVKit.framework */; };
 		E246565226D5A9B200FBB290 /* Contstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246565126D5A9B200FBB290 /* Contstants.swift */; };
 		E2AE736D26D86B01006128D1 /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AE736C26D86B01006128D1 /* RectangleCard.swift */; };
+		E2AE736F26D94C68006128D1 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AE736E26D94C68006128D1 /* TestView.swift */; };
 		E2C1761C26D6FFE80054DF48 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1761B26D6FFE80054DF48 /* CodeTextView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		E246564F26D5A8B400FBB290 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		E246565126D5A9B200FBB290 /* Contstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contstants.swift; sourceTree = "<group>"; };
 		E2AE736C26D86B01006128D1 /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
+		E2AE736E26D94C68006128D1 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		E2C1761B26D6FFE80054DF48 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				E246564C26D5900D00FBB290 /* ContentDetailView.swift */,
 				E2C1761B26D6FFE80054DF48 /* CodeTextView.swift */,
 				E2AE736C26D86B01006128D1 /* RectangleCard.swift */,
+				E2AE736E26D94C68006128D1 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2AE736F26D94C68006128D1 /* TestView.swift in Sources */,
 				E246562726D4442400FBB290 /* HomeView.swift in Sources */,
 				E246565226D5A9B200FBB290 /* Contstants.swift in Sources */,
 				E246564726D479FA00FBB290 /* HomeViewRow.swift in Sources */,
