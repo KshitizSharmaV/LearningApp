@@ -76,18 +76,28 @@ struct TestView: View {
                 }
             
                 Button {
-                    
-                    submitted = true
-                    // Check the answer an increment
-                    if selectedAnswerIndex == model.currentQuestion!.correctIndex {
-                     numCorrect += 1
+                    // Check if answer has been submitted
+                    if submitted == true {
+                        // Answer has already been submitted move to next question
+                        model.nextQuestion()
+                        
+                        // Reset Properties
+                        submitted = false
+                        selectedAnswerIndex = nil
+                    }
+                    else{
+                        submitted = true
+                        // Check the answer an increment
+                        if selectedAnswerIndex == model.currentQuestion!.correctIndex {
+                         numCorrect += 1
+                        }
                     }
                 } label: {
                     ZStack{
                         RectangleCard(color: selectedAnswerIndex == nil ? .gray : .green)
                             .frame(height:48)
                         
-                        Text("Submit")
+                        Text(buttonText)
                             .bold()
                             .foregroundColor(Color.white)
                     }
@@ -104,5 +114,20 @@ struct TestView: View {
         }
         
         
+    }
+    
+    var buttonText: String {
+        // Check if answer has been submitted
+        if submitted == true {
+            if model.currentQuestionIndex + 1 ==  model.currentModule!.test.questions.count {
+                return "Finish"
+            }
+            else {
+                return "Next Question"
+            }
+            
+        } else {
+            return "Submit"
+        }
     }
 }
