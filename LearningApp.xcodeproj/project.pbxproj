@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E22EAD9326D9CC9900E853C3 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EAD9226D9CC9900E853C3 /* TestResultView.swift */; };
 		E246562526D4442400FBB290 /* LearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246562426D4442400FBB290 /* LearningApp.swift */; };
 		E246562726D4442400FBB290 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246562626D4442400FBB290 /* HomeView.swift */; };
 		E246562926D4442500FBB290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E246562826D4442500FBB290 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E22EAD9226D9CC9900E853C3 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 		E246562126D4442400FBB290 /* LearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246562426D4442400FBB290 /* LearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningApp.swift; sourceTree = "<group>"; };
 		E246562626D4442400FBB290 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				E2C1761B26D6FFE80054DF48 /* CodeTextView.swift */,
 				E2AE736C26D86B01006128D1 /* RectangleCard.swift */,
 				E2AE736E26D94C68006128D1 /* TestView.swift */,
+				E22EAD9226D9CC9900E853C3 /* TestResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2AE736F26D94C68006128D1 /* TestView.swift in Sources */,
+				E22EAD9326D9CC9900E853C3 /* TestResultView.swift in Sources */,
 				E246562726D4442400FBB290 /* HomeView.swift in Sources */,
 				E246565226D5A9B200FBB290 /* Contstants.swift in Sources */,
 				E246564726D479FA00FBB290 /* HomeViewRow.swift in Sources */,

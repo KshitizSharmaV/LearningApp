@@ -19,35 +19,35 @@ struct HomeView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(model.modules) { module in
-                            
-                            NavigationLink(
-                                destination: ContentView()
-                                    .onAppear(perform: {
-                                        model.beginModule(module.id)
-                                    }),
-                                tag:module.id,
-                                selection: $model.currentContentSelected,
-                                label: {
-                                    // Learning Card
-                                    HomeViewRow(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) Lessons", time: module.content.time)
-                                })
-                            
-                            NavigationLink(
-                                destination: TestView()
-                                    .onAppear(perform: {
-                                        model.beginTest(module.id)
-                                    }),
-                                tag: module.id,
-                                selection: $model.currentTestSelected) {
-                                    HomeViewRow(image: module.test.image, title: "\(module.category) Test", description: module.test.description, count: "\(module.test.questions.count) Questions", time: module.test.time)
+                            VStack(spacing : 20) {
+                                NavigationLink(
+                                    destination: ContentView()
+                                        .onAppear(perform: {
+                                            model.beginModule(module.id)
+                                        }),
+                                    tag:module.id,
+                                    selection: $model.currentContentSelected,
+                                    label: {
+                                        // Learning Card
+                                        HomeViewRow(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) Lessons", time: module.content.time)
+                                    })
+                                
+                                NavigationLink(
+                                    destination: TestView()
+                                        .onAppear(perform: {
+                                            model.beginTest(module.id)
+                                        }),
+                                    tag: module.id,
+                                    selection: $model.currentTestSelected) {
+                                        HomeViewRow(image: module.test.image, title: "\(module.category) Test", description: module.test.description, count: "\(module.test.questions.count) Questions", time: module.test.time)
+                                    }
+                                
+                                NavigationLink(
+                                    destination: EmptyView()
+                                ) {
+                                    EmptyView()
                                 }
-                            
-                            NavigationLink(
-                                destination: EmptyView()
-                            ) {
-                                EmptyView()
                             }
-                            
                         }
                     }
                     .padding()
@@ -55,6 +55,11 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Get Started")
+            .onChange(of: model.currentContentSelected) { changedValue in
+                if changedValue == nil {
+                    model.currentModule = nil
+                }
+            }
         }
     }
 }

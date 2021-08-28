@@ -35,6 +35,9 @@ class ContentModel: ObservableObject {
     
     init() {
         getLocalData()
+        
+        // Download Remote json file and parse data
+        getRemoteData()
     }
     
     // Mark: - Data Methods
@@ -62,6 +65,45 @@ class ContentModel: ObservableObject {
         catch{
             print("Couldn't parse style data")
         }
+    }
+    
+    func getRemoteData() {
+        let urlString = "https://kshitizsharmav.github.io/learningapp-data/data2.json"
+        let url = URL(string: urlString)
+        guard url != nil else{
+            return
+        }
+        // Create a URLRequest object
+        let request = URLRequest(url: url!)
+        // Get the session and kick off the task
+        let session = URLSession.shared
+        
+        let dataTask = session.dataTask(with: request) {(data, response, error) in
+            
+            // Check if there's an error
+            guard error == nil else {
+                // There was an error
+                return
+            }
+            
+            
+            // Handle the response
+            do {
+                // create the json decoder
+                let jsonDecoder = JSONDecoder()
+                let modules = try jsonDecoder.decode([Module].self, from:data!)
+                
+                DispatchQueue.main.async {
+                    self.modules += modules
+                }
+            }
+            catch {
+                // Couldn't parse the json
+            }
+        }
+        
+        // Kick off the data task
+        dataTask.resume()
     }
     
     // Mark: - Module Navigation methods
@@ -103,8 +145,10 @@ class ContentModel: ObservableObject {
     func nextLesson() {
         currentLessonIndex += 1
         if currentLessonIndex < currentModule!.content.lessons.count {
-            currentLesson = currentModule!.content.lessons[currentLessonIndex]
-            codeText = addStyling(currentLesson!.explanation)
+            DispatchQueue.main.async() {
+                self.currentLesson = self.currentModule!.content.lessons[self.currentLessonIndex]
+                self.codeText = self.addStyling(self.currentLesson!.explanation)
+            }
         }
         else {
             currentLessonIndex = 0
